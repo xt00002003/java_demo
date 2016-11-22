@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Exception NoTice</title>
+    <style type="text/css">
+        .container {
+            width: 95%;
+            margin:0 auto;
+            padding-top:15px;
+            font-size:12px;
+            box-sizing:border-box;
+        }
+        .title-a{
+            font-size:16px;
+            color:red;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        td.itemTitle{
+            font-weight: bold;
+            background: rgb(224, 235, 240) repeat-x;
+            width: 15%;
+        }
+
+        table{
+            table-layout:fixed;
+            empty-cells:show;
+            border-collapse: collapse;
+            margin:0 auto;
+            border:1px solid #cad9ea;
+            color:#666;
+            width: 100%;
+        }
+
+        td, th{
+            border:1px solid #ab9797;
+            padding:0 1em 0;
+            text-align: left;
+            height: 30px;
+            word-wrap: break-word;
+        }
+
+        p.infoTitle {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align:center;font-weight: bolder;margin-bottom:40px;">
+        <span class="title-a">【报警】系统未知异常</span>
+    </div>
+    <div style="border:solid 1px #ececec;background-color:#fafafa;">
+        <div style="padding-left:20px;padding-right:20px;box-sizing:border-box;">
+            <p><strong>系统监控到未知异常发生, 请关注并介入处理!</strong></p>
+            <p>以下是详细监控信息<br/><hr size="1" style="color: #122b40" /></p>
+        </div>
+        <div style="padding:20px;box-sizing:border-box;">
+            <p class="infoTitle">异常明细信息</p>
+            <table>
+                <tr>
+                    <td class="itemTitle">发生时间:</td>
+                    <td>${occurTime!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">异常类型:</td>
+                    <td>${className!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">错误消息:</td>
+                    <td>${exceptionMessage!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">堆栈信息:</td>
+                    <td>${exceptionTrace!""}</td>
+                </tr>
+            </table>
+            <p class="infoTitle">请求明细信息</p>
+            <table>
+                <tr>
+                    <td class="itemTitle">请求头信息:</td>
+                    <td>${requestHeader!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">请求Cookie:</td>
+                    <td>${requestCookie!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">请求参数:</td>
+                    <td>${requestParams!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">请求Session:</td>
+                    <td>${requestSession!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">请求体:</td>
+                    <td>${requestBody!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">其它信息:</td>
+                    <td>${otherRequestInfo!""}</td>
+                </tr>
+            </table>
+            <p class="infoTitle">响应明细信息</p>
+            <table>
+                <tr>
+                    <td class="itemTitle">响应基本信息:</td>
+                    <td>${baseResponseInfo!""}</td>
+                </tr>
+                <tr>
+                    <td class="itemTitle">请求体:</td>
+                    <td>${responseBody!""}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="text-align: left;margin-top: 50px">
+        <p>
+            -------------------------------------------------------------------------------------------------------<br/>
+            本邮件为异常监控系统自动发送，请勿回复<br/>
+            This mail is sent by the exception monitor system automatically, please do not reply.<br/><br/>
+
+            -------------------------------------------------------------------------------------------------------<br/>
+        </p>
+    </div>
+</div>
+</body>
+</html>

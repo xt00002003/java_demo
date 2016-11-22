@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Exception Notice</title>
+<style type="text/css">
+.container {
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 15px;
+	font-size: 12px;
+	box-sizing: border-box;
+}
+
+.title-a {
+	font-size: 16px;
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+td.itemTitle {
+	font-weight: bold; 
+	background: rgb(224, 235, 240) repeat-x;
+	width: 120px;
+}
+
+table {
+	table-layout: fixed;
+	empty-cells: show;
+	border-collapse: collapse;
+	margin: 0 auto;
+	border: 1px solid #cad9ea;
+	color: #666;
+	width: 100%;
+  font-size: 14px;
+}
+
+td,th {
+	border: 1px solid #ab9797;
+	padding: 0 1em 0;
+	text-align: left;
+	height: 30px;
+	word-wrap: break-word;
+}
+
+p.infoTitle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div
+            style="text-align: center; font-weight: bolder; margin-bottom: 40px;">
+            <span class="title-a">【报警】系统未知异常</span>
+        </div>
+        <div
+            style="border: solid 1px #ececec; background-color: #fafafa;">
+            <div style="padding: 0px; box-sizing: border-box;">
+                <p class="infoTitle">异常明细信息</p>
+                <table>
+                    <tr>
+                        <td class="itemTitle">Date Time:</td>
+                        <td>${occurTime!""}</td>
+                    </tr>
+                    <tr>
+                        <td class="itemTitle">Msg:</td>
+                        <td>${exceptionMessage!""}</td>
+                    </tr>
+                    <tr>
+                        <td class="itemTitle">Detail Error:</td>
+                        <td>${exceptionTrace!""}</td>
+                    </tr>
+                    <tr>
+                        <td class="itemTitle">Data:</td>
+                        <td>${data!""}</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="text-align: left; margin-top: 50px">
+                <p>
+                    -------------------------------------------------------------------------------------------------------<br />
+                    本邮件为异常监控系统自动发送，请勿回复<br /> This mail is sent by the
+                    exception monitor system automatically, please do
+                    not reply.<br /> <br />
+                    -------------------------------------------------------------------------------------------------------<br />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

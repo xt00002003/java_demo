@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.padual.com/java/logback.xsd">
+	<property name="logDir" value="/data/log/tomcat/iread" />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{0}:%line - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="esLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logDir}/admin.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logDir}/admin.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date{HH:mm:ss.SSS} %X{invokeNo} [%thread] %-5level %logger{0}:%line - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="httpDetailLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logDir}/admin-httpDetail.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logDir}/admin-httpDetail.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date{HH:mm:ss.SSS} %X{invokeNo} [%thread] %-5level %logger{0}:%line - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.dark.es" level="debug" additivity="false">
+		<appender-ref ref="esLog" />
+        <appender-ref ref="console" />
+	</logger>
+	
+	<logger name="com.dark.imageutil" level="debug" additivity="false">
+		<appender-ref ref="httpDetailLog" />
+	</logger>
+	
+	<root level="debug">
+		<appender-ref ref="adminLog" />
+		<appender-ref ref="console" />
+	</root>
+</configuration>
