@@ -1,5 +1,6 @@
 package com.dark.spider;
 
+import com.dark.spider.dao.ArticleDaoImpl;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by tengxue on 16-4-22.
  * 爬虫程序的第一个测试用例
+ * http://www.agri.cn/
  */
 public class ArgiPageProcessor implements PageProcessor {
     private Site site = Site.me().setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36")
@@ -34,7 +36,7 @@ public class ArgiPageProcessor implements PageProcessor {
         if (page.getUrl().regex("http://www.agri.cn/qxny/nqyw/.+").match()){
             System.out.println("抓取页面的url--------------->"+page.getHtml().links().all());
             page.putField("title",page.getHtml().xpath("/html/body/table[3]/tbody/tr/td[1]/table[2]/tbody/tr/td/table[4]/tbody/tr[1]/td"));
-//            page.putField("content",page.getHtml().xpath("//*[@id=\"TRS_AUTOADD\"]"));
+            page.putField("content",page.getHtml().xpath("//*[@id=\"TRS_AUTOADD\"]"));
             page.putField("date",page.getHtml().xpath("/html/body/table[3]/tbody/tr/td[1]/table[2]/tbody/tr/td/table[4]/tbody/tr[2]/td"));
         }
 
@@ -47,6 +49,6 @@ public class ArgiPageProcessor implements PageProcessor {
 
     public static void main(String[] args) {
         Spider.create(new ArgiPageProcessor()).addUrl("http://www.agri.cn/")
-                .addPipeline(new ConsolePipeline()).thread(5).run();
+                .addPipeline(new ArticleDaoImpl()).addPipeline(new ConsolePipeline()).thread(5).run();
     }
 }
