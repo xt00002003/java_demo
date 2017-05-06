@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="D:/work/maven/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.8.48.234:3308/scm?useUnicode=true&amp;characterEncoding=utf8"
+                        userId="spfood" password="SPfood123#"/>
+        <javaModelGenerator targetPackage="com.dark.mybatis.domain"
+                            targetProject="F:/test/java_demo/src/main/java/"/>
+        <sqlMapGenerator targetPackage="mybatis/"
+                         targetProject="F:/test/java_demo/src/main/resources"/>
+        <javaClientGenerator
+                targetPackage="com.dark.mybatis.dao"
+                targetProject="F:/test/java_demo/src/main/java/"
+                type="XMLMAPPER"/>
+
+        <table tableName="scm_supplier" domainObjectName="Supplier"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+    </context>
+</generatorConfiguration>

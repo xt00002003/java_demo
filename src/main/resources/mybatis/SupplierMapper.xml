@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dark.mybatis.dao.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.dark.mybatis.domain.Supplier" >
+    <id column="SID" property="sid" jdbcType="BIGINT" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="GCODE" property="gcode" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SHORT_NAME" property="shortName" jdbcType="VARCHAR" />
+    <result column="FIRST_LETTER" property="firstLetter" jdbcType="VARCHAR" />
+    <result column="LEVEL" property="level" jdbcType="INTEGER" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="BUSINESSNO" property="businessno" jdbcType="VARCHAR" />
+    <result column="LINKEDMAN" property="linkedman" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="INTEGER" />
+    <result column="REGISTERED_CAPITAL" property="registeredCapital" jdbcType="DECIMAL" />
+    <result column="EMPLOYEES_NUMBER" property="employeesNumber" jdbcType="INTEGER" />
+    <result column="ANNUAL_TURNOVER" property="annualTurnover" jdbcType="DECIMAL" />
+    <result column="BANK" property="bank" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="INDUSTRY" property="industry" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="MAIN_PRODUCTS" property="mainProducts" jdbcType="VARCHAR" />
+    <result column="BUSINESS_SCOPE" property="businessScope" jdbcType="VARCHAR" />
+    <result column="COMPANY_PROFILE" property="companyProfile" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="CREAT_USER" property="creatUser" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+    <result column="DISTRICT_CODE" property="districtCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SID, CODE, GCODE, NAME, SHORT_NAME, FIRST_LETTER, LEVEL, TYPE, BUSINESSNO, LINKEDMAN, 
+    GENDER, REGISTERED_CAPITAL, EMPLOYEES_NUMBER, ANNUAL_TURNOVER, BANK, ACCOUNT, INDUSTRY, 
+    PHONE, ADDR, MAIN_PRODUCTS, BUSINESS_SCOPE, COMPANY_PROFILE, STATUS, CREATETIME, 
+    CREAT_USER, UPDATE_TIME, UPDATE_USER, DISTRICT_CODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from scm_supplier
+    where SID = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from scm_supplier
+    where SID = #{sid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dark.mybatis.domain.Supplier" >
+    insert into scm_supplier (SID, CODE, GCODE, 
+      NAME, SHORT_NAME, FIRST_LETTER, 
+      LEVEL, TYPE, BUSINESSNO, 
+      LINKEDMAN, GENDER, REGISTERED_CAPITAL, 
+      EMPLOYEES_NUMBER, ANNUAL_TURNOVER, BANK, 
+      ACCOUNT, INDUSTRY, PHONE, 
+      ADDR, MAIN_PRODUCTS, BUSINESS_SCOPE, 
+      COMPANY_PROFILE, STATUS, CREATETIME, 
+      CREAT_USER, UPDATE_TIME, UPDATE_USER, 
+      DISTRICT_CODE)
+    values (#{sid,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{gcode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{firstLetter,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{businessno,jdbcType=VARCHAR}, 
+      #{linkedman,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{registeredCapital,jdbcType=DECIMAL}, 
+      #{employeesNumber,jdbcType=INTEGER}, #{annualTurnover,jdbcType=DECIMAL}, #{bank,jdbcType=VARCHAR}, 
+      #{account,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{addr,jdbcType=VARCHAR}, #{mainProducts,jdbcType=VARCHAR}, #{businessScope,jdbcType=VARCHAR}, 
+      #{companyProfile,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{creatUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{districtCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dark.mybatis.domain.Supplier" >
+    insert into scm_supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        SID,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="gcode != null" >
+        GCODE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="shortName != null" >
+        SHORT_NAME,
+      </if>
+      <if test="firstLetter != null" >
+        FIRST_LETTER,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="businessno != null" >
+        BUSINESSNO,
+      </if>
+      <if test="linkedman != null" >
+        LINKEDMAN,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="registeredCapital != null" >
+        REGISTERED_CAPITAL,
+      </if>
+      <if test="employeesNumber != null" >
+        EMPLOYEES_NUMBER,
+      </if>
+      <if test="annualTurnover != null" >
+        ANNUAL_TURNOVER,
+      </if>
+      <if test="bank != null" >
+        BANK,
+      </if>
+      <if test="account != null" >
+        ACCOUNT,
+      </if>
+      <if test="industry != null" >
+        INDUSTRY,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="mainProducts != null" >
+        MAIN_PRODUCTS,
+      </if>
+      <if test="businessScope != null" >
+        BUSINESS_SCOPE,
+      </if>
+      <if test="companyProfile != null" >
+        COMPANY_PROFILE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="creatUser != null" >
+        CREAT_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="districtCode != null" >
+        DISTRICT_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="gcode != null" >
+        #{gcode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null" >
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        #{firstLetter,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="businessno != null" >
+        #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="linkedman != null" >
+        #{linkedman,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="employeesNumber != null" >
+        #{employeesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="annualTurnover != null" >
+        #{annualTurnover,jdbcType=DECIMAL},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProducts != null" >
+        #{mainProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatUser != null" >
+        #{creatUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dark.mybatis.domain.Supplier" >
+    update scm_supplier
+    <set >
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="gcode != null" >
+        GCODE = #{gcode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null" >
+        SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        FIRST_LETTER = #{firstLetter,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="businessno != null" >
+        BUSINESSNO = #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="linkedman != null" >
+        LINKEDMAN = #{linkedman,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="registeredCapital != null" >
+        REGISTERED_CAPITAL = #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="employeesNumber != null" >
+        EMPLOYEES_NUMBER = #{employeesNumber,jdbcType=INTEGER},
+      </if>
+      <if test="annualTurnover != null" >
+        ANNUAL_TURNOVER = #{annualTurnover,jdbcType=DECIMAL},
+      </if>
+      <if test="bank != null" >
+        BANK = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        INDUSTRY = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProducts != null" >
+        MAIN_PRODUCTS = #{mainProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        BUSINESS_SCOPE = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        COMPANY_PROFILE = #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatUser != null" >
+        CREAT_USER = #{creatUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        DISTRICT_CODE = #{districtCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dark.mybatis.domain.Supplier" >
+    update scm_supplier
+    set CODE = #{code,jdbcType=VARCHAR},
+      GCODE = #{gcode,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      FIRST_LETTER = #{firstLetter,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=INTEGER},
+      TYPE = #{type,jdbcType=INTEGER},
+      BUSINESSNO = #{businessno,jdbcType=VARCHAR},
+      LINKEDMAN = #{linkedman,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=INTEGER},
+      REGISTERED_CAPITAL = #{registeredCapital,jdbcType=DECIMAL},
+      EMPLOYEES_NUMBER = #{employeesNumber,jdbcType=INTEGER},
+      ANNUAL_TURNOVER = #{annualTurnover,jdbcType=DECIMAL},
+      BANK = #{bank,jdbcType=VARCHAR},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      INDUSTRY = #{industry,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      MAIN_PRODUCTS = #{mainProducts,jdbcType=VARCHAR},
+      BUSINESS_SCOPE = #{businessScope,jdbcType=VARCHAR},
+      COMPANY_PROFILE = #{companyProfile,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CREAT_USER = #{creatUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      DISTRICT_CODE = #{districtCode,jdbcType=VARCHAR}
+    where SID = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>
