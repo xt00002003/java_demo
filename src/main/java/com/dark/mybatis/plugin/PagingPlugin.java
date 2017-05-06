@@ -1,7 +1,10 @@
 package com.dark.mybatis.plugin;
 
 import org.apache.ibatis.executor.statement.StatementHandler;
+import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.SystemMetaObject;
 
 import java.sql.Connection;
 import java.util.Properties;
@@ -35,6 +38,14 @@ public class PagingPlugin implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        StatementHandler statementHandler=getUnProxyObject(invocation);
+        MetaObject metaObject= SystemMetaObject.forObject(statementHandler);
+        String sql=(String) metaObject.getValue("delegate.boundSql.sql");
+        if(!checkSelect(sql)){
+            return invocation.proceed();
+        }
+        BoundSql boundSql=(BoundSql)metaObject.getValue("delegate.boundSql");
+        Object parameterObject=boundSql.getParameterObject();
         return null;
     }
 
