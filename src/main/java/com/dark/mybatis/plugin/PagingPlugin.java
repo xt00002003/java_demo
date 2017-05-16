@@ -9,6 +9,8 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,10 +32,12 @@ import java.util.Set;
         @Signature(
                 type = StatementHandler.class,
                 method = "prepare",
-                args = {Connection.class}
+                args = {Connection.class, Integer.class }
         )
 })
 public class PagingPlugin implements Interceptor {
+
+    private final static Logger LOG = LoggerFactory.getLogger(PagingPlugin.class);
 
     private Integer defaultPage;
     private Integer defaultPageSize;
@@ -127,6 +131,7 @@ public class PagingPlugin implements Interceptor {
         Configuration configuration=mappedStatement.getConfiguration();
         String sql=(String) metaObject.getValue("delegate.boundSql.sql");
         String countSql="select count(*) as total from ("+sql+") $_paging";
+        LOG.debug("the countSql is :" +countSql);
         Connection connection=(Connection) invocation.getArgs()[0];
         PreparedStatement ps=null;
         int total=0;

@@ -43,6 +43,13 @@
     from scm_supplier
     where SID = #{sid,jdbcType=BIGINT}
   </select>
+
+  <select id="selectPagedSupplierList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from scm_supplier
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from scm_supplier
     where SID = #{sid,jdbcType=BIGINT}

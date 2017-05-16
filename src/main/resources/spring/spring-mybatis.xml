@@ -33,11 +33,25 @@
         <property name="maxWait" value="3000"></property>
     </bean>
 
+    <bean id="paginationInterceptor" class="com.dark.mybatis.plugin.PagingPlugin">
+        <property name="properties">
+            <map>
+                <entry key="default.page" value="1"></entry>
+                <entry key="default.page.size" value="10"></entry>
+                <entry key="default.use.flag" value="true"></entry>
+                <entry key="default.check.flag" value="true"></entry>
+            </map>
+        </property>
+    </bean>
+
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mybatis/*.xml"></property>
+        <property name="plugins">
+            <ref bean="paginationInterceptor"/>
+        </property>
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
