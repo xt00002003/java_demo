@@ -1,6 +1,13 @@
 package com.dark.collection;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Multiset;
+import com.google.common.collect.Sets;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -25,6 +32,13 @@ public class ImmutableSetDemo {
         for (String entity:COLOR_NAMES){
             System.out.println(entity);
         }
+        List<String> params=new ArrayList<>();
+        params.add("a");
+        params.add("a");
+        params.add("b");
+        params.add("a");
+        Set<String> result= Sets.newHashSet(params);
+        System.out.println("---------------- the result is: -----------------"+result);
 
     }
 }

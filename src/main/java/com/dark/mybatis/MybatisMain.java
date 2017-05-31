@@ -22,13 +22,13 @@ public class MybatisMain {
 
         SupplierMapper supplierMapper=(SupplierMapper)context.getBean("supplierMapper");
 
-//        Supplier supplier= supplierMapper.selectByPrimaryKey(4590L);
+        Supplier supplier= supplierMapper.selectByPrimaryKey(4590L);
 
         PageParams pageParams=new PageParams();
         pageParams.setPage(1);
         pageParams.setPageSize(10);
         pageParams.setUseFlag(true);
-        List<Supplier>  supplierList=supplierMapper.selectPagedSupplierList(pageParams);
+//        List<Supplier>  supplierList=supplierMapper.selectPagedSupplierList(pageParams);
         System.out.println("-------------- ok ----------------");
 
 
