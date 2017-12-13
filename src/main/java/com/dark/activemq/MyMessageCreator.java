@@ -5,8 +5,8 @@ import javax.jms.Message;
 import javax.jms.Session;
 
 import com.alibaba.fastjson.JSON;
-import com.spfood.wos.workOrder.intf.domain.ReceiveTask;
-import com.spfood.wos.workOrder.intf.domain.ReceiveTaskGoods;
+//import com.spfood.wos.workOrder.intf.domain.ReceiveTask;
+//import com.spfood.wos.workOrder.intf.domain.ReceiveTaskGoods;
 import org.springframework.jms.core.MessageCreator;
 
 import java.util.ArrayList;

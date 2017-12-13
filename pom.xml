@@ -191,17 +191,17 @@
             <artifactId>transactions-jdbc</artifactId>
             <version>${atomikos.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.spfood</groupId>
-            <artifactId>wos-workOrder-service-intf</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.spfood</groupId>
-                    <artifactId>kernel</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.spfood</groupId>-->
+            <!--<artifactId>wos-workOrder-service-intf</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>com.spfood</groupId>-->
+                    <!--<artifactId>kernel</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
         <dependency>
@@ -257,6 +257,17 @@
             <version>1.9.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.1</version>
+        </dependency>
 
     </dependencies>
 
